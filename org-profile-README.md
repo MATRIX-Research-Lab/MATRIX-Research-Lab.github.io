@@ -11,26 +11,25 @@ and child health, environmental health, and clinical trials.
 
 ## Research threads
 
-- **Compositional data analysis** — sequencing yields relative, not absolute, abundances.
+- **Compositional data analysis**: sequencing yields relative, not absolute, abundances.
   We estimate and correct the sample-specific sampling fraction directly, so differential
   abundance comes with valid confidence intervals and controlled false discovery rates.
-- **Multi-omics integration** — correlation and latent-structure estimators that link
-  microbiome, metabolome, transcriptome, and clinical layers into one coherent model.
-- **Causal inference** — mediation analysis, confounding adjustment, and treatment-effect
+- **Multi-omics integration**: correlation and latent-structure estimators that link
+  microbiome, metabolome, proteome, and clinical layers into one coherent model.
+- **Causal inference**: mediation analysis, confounding adjustment, and treatment-effect
   estimation for high-dimensional, sparse, compositional exposures and mediators.
-- **Explainable AI** — competitive prediction paired with interpretable structure,
-  uncertainty quantification, and feature attributions that survive omics correlation
-  patterns.
-- **Translational collaboration** — methods developed against real scientific questions.
+- **Explainable AI**: competitive prediction paired with interpretable structure,
+  uncertainty quantification, and feature attributions.
+- **Translational collaboration**: methods developed against real scientific questions.
 
 ## Software
 
-- **[ANCOMBC](https://github.com/FrederickHuangLin/ANCOMBC)** — differential abundance
-  analysis for microbiome data with bias correction.
+- **[ANCOMBC](https://github.com/FrederickHuangLin/ANCOMBC)**: differential abundance analysis for microbiome data with bias correction.
   Also on [Bioconductor](https://www.bioconductor.org/packages/ANCOMBC/).
+- **[MetVAE](https://pypi.org/project/metvae/)**: a variational autoencoder (VAE) framework for untargeted metabolomics correlation analysis.
 
 For bugs or usage questions about our software, please **open an issue on the relevant
-repository** rather than emailing — that way the answer helps everyone else too.
+repository** rather than emailing; that way the answer helps everyone else too.
 
 ## Contact
 
@@ -43,7 +42,3 @@ Assistant Professor of Biostatistics
 - Lab website: <https://matrix-research-lab.github.io/>
 - UMD faculty page: <https://sph.umd.edu/people/huang-lin>
 - Google Scholar: <https://scholar.google.com/citations?user=ysKnF2EAAAAJ&hl=en>
-
-Questions about the research, the software, or joining the lab are all welcome.
-Prospective students and postdocs: see the
-[Join](https://matrix-research-lab.github.io/join.html) page before writing.
