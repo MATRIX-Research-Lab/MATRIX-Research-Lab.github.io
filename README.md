@@ -125,7 +125,6 @@ exhaustive list.
 
 ## Still to fill in
 
-- [ ] Headshot at `docs/assets/img/huang-lin.jpg` (the PI card currently shows initials)
 - [ ] Syllabus PDF at `docs/assets/files/epib674-syllabus.pdf`, if it becomes public
 - [ ] Real mentee names and photos in `docs/people.html` (three placeholder cards are in place)
 - [ ] Refresh the citation numbers on `docs/index.html` once or twice a year
