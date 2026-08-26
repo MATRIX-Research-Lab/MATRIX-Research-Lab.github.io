@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Software | MATRIX Lab</title>
+<meta name="description" content="Open-source software from the MATRIX Lab, including the ANCOMBC R/Bioconductor package.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><span class="dot"></span>MATRIX Lab <small>UMD SPH</small></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">&#9776;</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="grants.html">Grants</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="software.html" class="active">Software</a></li>
+      <li><a href="teaching.html">Teaching</a></li>
+      <li><a href="mentoring.html">Mentoring</a></li>
+      <li><a href="people.html">People</a></li>
+      <li><a href="join.html">Join</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+  <div class="page-head">
+    <div class="wrap">
+      <h1>Software</h1>
+      <p>A method that nobody can run is not a method. Everything we publish ships as documented, maintained open-source code.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="grid grid-2">
+
+        <div class="card">
+          <h3>ANCOMBC</h3>
+          <p class="role" style="color:var(--brand);font-weight:600;font-size:.9rem">R / Bioconductor</p>
+          <p>
+            Differential abundance analysis for microbiome and other compositional data. Implements
+            <strong>ANCOM-BC</strong> (two-group, bias-corrected) and <strong>ANCOM-BC2</strong>
+            (multi-group, covariate adjustment, repeated measures), plus <strong>SECOM</strong> for
+            linear and nonlinear taxa&ndash;taxa correlation.
+          </p>
+          <p><code>BiocManager::install("ANCOMBC")</code></p>
+          <p class="pub-links">
+            <a class="tag tag-hi" href="https://www.bioconductor.org/packages/ANCOMBC/">Bioconductor</a>
+            <a class="tag" href="https://github.com/FrederickHuangLin/ANCOMBC">GitHub</a>
+            <a class="tag" href="publications.html">Cite</a>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>metvae</h3>
+          <p class="role" style="color:var(--brand);font-weight:600;font-size:.9rem">Developer</p>
+          <p>
+            A variational autoencoder for metabolomics data that corrects for confounding while
+            estimating molecular co-occurrence, supporting correlation-based molecular networks
+            built from large-scale untargeted metabolomics.
+          </p>
+          <p class="pub-links">
+            <a class="tag" href="https://github.com/FrederickHuangLin">GitHub</a>
+            <a class="tag" href="publications.html">Cite</a>
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>q2-composition</h3>
+          <p class="role" style="color:var(--muted);font-weight:600;font-size:.9rem">Contributor</p>
+          <p>
+            The QIIME 2 plugin for compositional data analysis, which brings ANCOM-BC to the QIIME 2
+            ecosystem so microbiome researchers can run bias-corrected differential abundance inside
+            their existing pipeline.
+          </p>
+          <p class="pub-links">
+            <a class="tag" href="https://www.bioconductor.org/packages/ANCOMBC/">Related: ANCOMBC</a>
+          </p>
+        </div>
+
+        <!-- EDIT: copy a card for each new package or tool. -->
+        <div class="card">
+          <h3>More coming</h3>
+          <p class="role" style="color:var(--muted);font-weight:600;font-size:.9rem">In development</p>
+          <p>
+            New tools for multi-omics integration, causal mediation with compositional mediators, and
+            explainable prediction models are in development and will be released here. A scalable
+            Python implementation of ANCOM-BC is also in preprint.
+          </p>
+          <p class="pub-links">
+            <a class="tag" href="contact.html">Ask about early access</a>
+          </p>
+        </div>
+
+      </div>
+
+      <div class="wrap narrow" style="padding:0;margin-top:3rem">
+        <h2>How to cite</h2>
+        <p>If ANCOMBC supports your work, please cite the corresponding method paper:</p>
+        <ul>
+          <li><strong>ANCOM-BC</strong> &mdash; Lin H, Peddada SD. <em>Nature Communications</em> 11:3514 (2020).</li>
+          <li><strong>ANCOM-BC2</strong> &mdash; Lin H, Peddada SD. <em>Nature Methods</em> 21:83&ndash;91 (2024).</li>
+          <li><strong>SECOM</strong> &mdash; Lin H, Eggesb&oslash; M, Peddada SD. <em>Nature Communications</em> 13:4946 (2022).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>MATRIX Lab</h4>
+        <p>Multi-omic Analytics, Translational Research, Inference &amp; eXplainable AI.</p>
+        <p>Department of Epidemiology and Biostatistics<br>
+           University of Maryland School of Public Health<br>
+           4200 Valley Drive, Suite 2242<br>
+           College Park, MD 20742</p>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <ul>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="grants.html">Grants</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="software.html">Software</a></li>
+          <li><a href="teaching.html">Teaching</a></li>
+          <li><a href="mentoring.html">Mentoring</a></li>
+          <li><a href="people.html">People</a></li>
+          <li><a href="join.html">Join</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <ul>
+          <li><a href="https://sph.umd.edu/people/huang-lin">UMD faculty profile</a></li>
+          <li><a href="https://scholar.google.com/citations?user=ysKnF2EAAAAJ&amp;hl=en">Google Scholar</a></li>
+          <li><a href="https://www.bioconductor.org/packages/ANCOMBC/">Bioconductor: ANCOMBC</a></li>
+          <li><a href="mailto:hlin1239@umd.edu">hlin1239@umd.edu</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span class="year">2026</span> MATRIX Lab, University of Maryland</span>
+      <span>Static site</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

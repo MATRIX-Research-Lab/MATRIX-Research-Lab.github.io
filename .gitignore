@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+._*
+
+# Claude Code / Google Drive sync duplicates
+.claude/
+.claude (*)/
+
+# Editor / OS noise
+*.swp
+Thumbs.db
