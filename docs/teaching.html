@@ -49,7 +49,6 @@
         <p>Taught in the Department of Epidemiology and Biostatistics.</p>
       </div>
 
-      <!-- EDIT: one .card per course. Copy a block to add another. -->
       <div class="grid grid-2">
 
         <div class="card">
@@ -68,7 +67,7 @@
           <p class="role" style="font-family:var(--mono);font-size:.72rem;letter-spacing:.1em">EPIB 315</p>
           <h3>Biostatistics for Public Health Practice</h3>
           <p style="color:var(--muted);font-size:.9rem;margin-bottom:.9em">Fall 2024, Fall 2025</p>
-          <p>Core biostatistical methods for public health practice &mdash; study design, estimation,
+          <p>Core biostatistical methods for public health practice: study design, estimation,
           inference, and the interpretation of published quantitative evidence.</p>
           <p class="pub-links">
             <span class="tag tag-on">Currently teaching</span>
@@ -77,11 +76,8 @@
 
       </div>
 
-      <div class="todo" style="margin-top:1.6rem">
-        <p>If a syllabus is public, put the PDF in <code>assets/files/</code> and add a
-        <code>&lt;a class="tag" href="assets/files/epib674-syllabus.pdf"&gt;Syllabus&lt;/a&gt;</code>
-        link to the card.</p>
-      </div>
+      <!-- If a syllabus becomes public, put the PDF in assets/files/ and add a
+           <a class="tag" href="assets/files/epib674-syllabus.pdf">Syllabus</a> link to the card. -->
     </div>
   </section>
 
@@ -90,11 +86,7 @@
     <div class="wrap narrow">
       <span class="kicker">Beyond the classroom</span>
       <h2>Invited talks &amp; workshops</h2>
-      <p>
-        Recent invited presentations at statistical and biometric meetings. Full list, including
-        posters and conference abstracts, is on the <a href="https://sph.umd.edu/people/huang-lin">UMD
-        faculty page</a>.
-      </p>
+      <p>Recent invited presentations at statistical and biometric meetings.</p>
 
       <ul class="pub-list">
         <li>
@@ -143,13 +135,19 @@
       <span class="kicker">Open materials</span>
       <h2>Learning to use our methods</h2>
       <p>
-        The most-used teaching resource from this lab is not a course &mdash; it is the package
+        The most-used teaching resource from this lab is not a course: it is the package
         documentation. The <strong>ANCOMBC</strong> vignettes walk through a complete differential
         abundance analysis on real data, from a phyloseq or TreeSummarizedExperiment object to
         interpreted results, and are written to be followed by someone with one semester of statistics.
       </p>
+      <p>
+        <strong>MetVAE</strong> is documented the same way, with worked examples that take an
+        untargeted metabolomics dataset through confounding correction to a correlation-based
+        molecular network.
+      </p>
       <p class="pub-links">
         <a class="tag tag-hi" href="https://www.bioconductor.org/packages/ANCOMBC/">ANCOMBC vignettes</a>
+        <a class="tag tag-hi" href="https://pypi.org/project/metvae/">MetVAE on PyPI</a>
         <a class="tag" href="software.html">All software</a>
       </p>
 
@@ -158,12 +156,8 @@
         <p>
           Methods courses fail when students can derive an estimator but cannot tell whether it applies
           to the dataset in front of them. Our teaching pairs the mathematics with real, messy data and
-          working code &mdash; students leave able to justify a modeling choice to a collaborator, not
+          working code; students leave able to justify a modeling choice to a collaborator, not
           only to a grader.
-        </p>
-        <p style="margin-top:1em;color:var(--muted);font-size:.9rem">
-          Rewrite this paragraph in your own words &mdash; search committees and prospective students
-          both read it closely.
         </p>
       </div>
     </div>
@@ -206,7 +200,6 @@
     </div>
     <div class="footer-bottom">
       <span>&copy; <span class="year">2026</span> MATRIX Lab, University of Maryland</span>
-      <span>Static site</span>
     </div>
   </div>
 </footer>

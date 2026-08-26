@@ -125,10 +125,18 @@ exhaustive list.
 
 ## Still to fill in
 
-- [ ] Headshot at `docs/assets/img/huang-lin.jpg`
-- [ ] Real lab members as they join (`people.html`)
-- [ ] Confirm the collaborator list on `people.html` is who you want named, and that
-      each affiliation is current
-- [ ] Refresh the citation numbers on `index.html` once or twice a year
-- [ ] Decide whether to keep dollar amounts on `grants.html` (some labs list them, some don't)
+- [ ] Headshot at `docs/assets/img/huang-lin.jpg` (the PI card currently shows initials)
+- [ ] Syllabus PDF at `docs/assets/files/epib674-syllabus.pdf`, if it becomes public
+- [ ] Real mentee names and photos in `docs/people.html` (three placeholder cards are in place)
+- [ ] Refresh the citation numbers on `docs/index.html` once or twice a year
 - [ ] Rewrite the teaching-philosophy and mentoring paragraphs in your own words
+
+## Recruiting content
+
+Sections that advertise openings are commented out rather than deleted, so they can be
+restored when there is funding to advertise. Search for `Reactivate` and for commented
+`callout` blocks in:
+
+- `docs/join.html` (the six audience cards, how-to-reach-out, and what-we-look-for)
+- `docs/index.html` (the "Interested in working with us?" callout)
+- `docs/mentoring.html` (the "Looking for a mentor?" callout)
