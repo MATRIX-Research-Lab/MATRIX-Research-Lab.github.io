@@ -79,7 +79,8 @@ The site lives in the lab organization and is served by GitHub Pages at
 <https://matrix-research-lab.github.io/>.
 
 This folder is already a git repository with `origin` pointing at
-`https://github.com/MATRIX-Research-Lab/MATRIX-Research-Lab.github.io`. To publish a change:
+`git@github.com:MATRIX-Research-Lab/MATRIX-Research-Lab.github.io.git` over SSH, so pushing
+never asks for a password. To publish a change:
 
 ```bash
 git add -A && git commit -m "Describe the change" && git push
