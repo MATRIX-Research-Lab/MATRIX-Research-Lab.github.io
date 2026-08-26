@@ -1,141 +1,108 @@
 # MATRIX Lab website
 
-A plain static website — HTML + CSS + a few lines of JavaScript. No build step, no
-frameworks, no dependencies to update. You edit a file, save, refresh the browser.
+Static HTML, CSS, and a small amount of JavaScript. No build step and no dependencies.
 
-## Repository layout
+## Layout
 
 ```
-docs/                  The website. Everything GitHub Pages serves lives here.
-org-profile-README.md  Text of the organization landing page at
-                       github.com/MATRIX-Research-Lab. Edited here, pasted into
-                       the separate `.github` repository on github.com.
+docs/                  Site files. GitHub Pages serves this folder.
+org-profile-README.md  Text for the organization page at github.com/MATRIX-Research-Lab.
 README.md              This file.
 ```
 
-## Files (all inside `docs/`)
+Inside `docs/`:
 
 ```
-index.html          Home: hero, research themes, impact stats, news, section links
-research.html       The five research threads
-grants.html         Active and completed funding          [placeholders]
-publications.html   Selected publications, with DOIs
-software.html       ANCOMBC and future packages
-teaching.html       Courses, workshops, open materials    [placeholders]
-mentoring.html      Mentee projects, theses, alumni       [placeholders]
-people.html         PI bio, lab members, collaborators    [placeholders]
-join.html           Recruiting / how to apply
-contact.html        Address, email, office
+index.html          Home
+research.html       Research threads
+grants.html         Funding, current and past
+publications.html   Publication list
+software.html       ANCOMBC, MetVAE, q2-composition
+teaching.html       Courses, talks, open materials
+mentoring.html      Mentee projects and committees
+people.html         PI, mentees, collaborators
+join.html           Graduate admissions pointer
+contact.html        Email, phone, office
 
-assets/css/style.css      All styling. Colors live at the very top in :root.
-assets/js/main.js         Mobile menu + auto-updating copyright year.
-assets/js/publications.js YOUR PUBLICATION LIST — the only file to edit for papers.
-assets/js/pubs.js         Renders that list. You should not need to touch this.
-assets/img/            Photos: headshots, lab photos.
-assets/files/          PDFs: CV, syllabi, posters, preprints.
+assets/css/style.css      Styling. Colors are in the :root block at the top.
+assets/js/main.js         Mobile menu and copyright year.
+assets/js/publications.js Publication list. Edit this to add a paper.
+assets/js/pubs.js         Rendering code for that list.
+assets/img/               Photos.
+assets/files/             PDFs.
 ```
 
-## Preview it locally
-
-Open a terminal in this folder and run:
+## Local preview
 
 ```bash
 cd docs && python3 -m http.server 8000
 ```
 
-Then visit <http://localhost:8000>. Edit any file, save, refresh. Or double-click
-`docs/start-preview.bat`, which does both steps for you.
+Open <http://localhost:8000>, edit a file, save, reload. `docs/start-preview.bat` does the
+same on Windows.
 
-## Finding what to fill in
+## Editing
 
-Anything still needing your input is either a `[bracketed placeholder]` or a dashed
-**PLACEHOLDER** box on the page. To list every one from the terminal:
+Text sits between HTML tags. Change the text and leave the tags alone.
 
-```bash
-grep -n "PLACEHOLDER\|EDIT:\|\[.*\]" docs/*.html
-```
-
-## Editing tips
-
-- **Text**: everything between HTML tags is plain text. Change it and save.
-- **Colors**: `docs/assets/css/style.css`, the `:root` block at the top. Every page updates at once.
-- **Adding a publication**: do NOT edit `publications.html`. Open
-  `docs/assets/js/publications.js`, copy one `{ ... }` block, and fill it in. Set
-  `featured: true` to make it appear in the default "Selected" view. The page rebuilds
-  itself from that file.
-- **Adding a grant, course, or mentee project**: copy an entire `<li> ... </li>` block
-  inside the relevant `<ul class="pub-list">` and edit the text. These three share one format.
-- **Status pills**: `tag-on` is green (active/current), `tag-off` is grey (completed),
-  `tag-hi` is red (emphasis, e.g. a DOI link).
-- **Adding a person**: copy one `<div class="card member"> ... </div>` block.
-- **Photos**: save into `docs/assets/img/`, then replace the grey placeholder
-  `<div class="avatar">...</div>` with `<img src="assets/img/name.jpg" alt="Name">`.
-- **Navigation and footer** are duplicated across all ten pages. If you add or rename a
-  page, update the `<ul class="nav-links">` block in every file.
+- Colors and fonts: `docs/assets/css/style.css`, `:root` block at the top.
+- Publications: edit `docs/assets/js/publications.js`, not `publications.html`. Copy a
+  `{ ... }` block and fill it in. `featured: true` puts a paper in the default view.
+- Grants, courses, mentee projects: copy an `<li> ... </li>` block inside the relevant
+  `<ul class="pub-list">`. All three pages use the same format.
+- People: copy a `<div class="card member"> ... </div>` block.
+- Photos: save into `docs/assets/img/` and point an `<img>` at it. Resize large files first;
+  the cards render at roughly 200 by 230 pixels.
+- Tags: `tag-on` green, `tag-off` grey, `tag-hi` red.
+- Navigation and footer are repeated in all ten files. Adding or renaming a page means
+  editing every one.
 
 ## Publishing
-
-The site lives in the lab organization and is served by GitHub Pages at
-<https://matrix-research-lab.github.io/>.
-
-This folder is already a git repository with `origin` pointing at
-`git@github.com:MATRIX-Research-Lab/MATRIX-Research-Lab.github.io.git` over SSH, so pushing
-never asks for a password. To publish a change:
 
 ```bash
 git add -A && git commit -m "Describe the change" && git push
 ```
 
-The live site updates within a minute or two. Repository settings for Pages live at
-**Settings -> Pages -> Source: deploy from branch `main`, folder `/docs`**.
+The live site at <https://matrix-research-lab.github.io/> updates within a couple of minutes.
+Pages settings are under Settings > Pages > Source: deploy from branch `main`, folder `/docs`.
 
-Two names here are fixed by GitHub, not by preference:
+Two constraints come from GitHub rather than from preference:
 
-- The repository must stay named `MATRIX-Research-Lab.github.io`. That exact name is what
-  makes GitHub serve it at the bare organization address rather than at a `/subpath/`.
-- The site folder must be named `docs`. Branch-based Pages will only publish from the
-  repository root or from a folder named exactly `docs` -- no other name works without
-  adding a GitHub Actions workflow.
+- The repository name `MATRIX-Research-Lab.github.io` is what puts the site at the bare
+  organization address instead of a subpath.
+- Branch-based Pages publishes only from the repository root or from a folder named `docs`.
 
-The repository has to be public: on a free organization plan, Pages only publishes from
-public repositories.
+The repository also has to stay public, since Pages on a free organization plan does not
+serve private repositories.
 
-Later, ask UMD IT whether a custom address (e.g. `matrixlab.umd.edu`) can point at it via a
-CNAME record; if so, set it under Settings -> Pages -> Custom domain.
+For a custom address such as `matrixlab.umd.edu`, ask UMD IT about a CNAME record, then set
+it under Settings > Pages > Custom domain.
 
-## The organization landing page
+## Organization page
 
-`github.com/MATRIX-Research-Lab` shows whatever is in `profile/README.md` of a repository
-named literally `.github`. That name is not changeable, and it has to be a second, separate
-repository -- GitHub does not look anywhere else for it.
+`github.com/MATRIX-Research-Lab` displays `profile/README.md` from a separate repository
+named `.github`. Keep the working copy in `org-profile-README.md` here and paste it across
+when it changes.
 
-Because it changes about once a year, there is no local clone of it. `org-profile-README.md`
-in this folder is the source of truth: edit it here, then paste it into
-`github.com/MATRIX-Research-Lab/.github` -> `profile/README.md` -> edit in the browser ->
-commit.
+## Publication list
 
-## Keeping publications in sync
+Google Scholar blocks automated access, so the page cannot pull from it directly.
+`docs/assets/js/publications.js` mirrors the publication section of the CV, and the page
+renders from that file. Scholar stays linked for the complete record.
 
-Google Scholar has no public API and blocks automated access, so a static page cannot pull
-from it directly. Instead, `docs/assets/js/publications.js` is the single source of truth: it
-mirrors the publication section of your CV, and the page renders itself from it. When your
-CV changes, update that one file. The "Selected" view is controlled by the `featured` flag,
-so curation stays in your hands, and Google Scholar stays linked from the page for the
-exhaustive list.
+## Outstanding
 
-## Still to fill in
-
+- [ ] MetVAE archive link in the citation list on `docs/software.html`
 - [ ] Syllabus PDF at `docs/assets/files/epib674-syllabus.pdf`, if it becomes public
-- [ ] Real mentee names and photos in `docs/people.html` (three placeholder cards are in place)
-- [ ] Refresh the citation numbers on `docs/index.html` once or twice a year
-- [ ] Rewrite the teaching-philosophy and mentoring paragraphs in your own words
+- [ ] Mentee names and photos in `docs/people.html`
+- [ ] Citation counts on `docs/index.html`, once or twice a year
+- [ ] Teaching philosophy and mentoring paragraphs, in your own words
 
-## Recruiting content
+## Commented-out sections
 
-Sections that advertise openings are commented out rather than deleted, so they can be
-restored when there is funding to advertise. Search for `Reactivate` and for commented
-`callout` blocks in:
+Recruiting content is commented out rather than deleted, ready to restore when there are
+funded openings:
 
-- `docs/join.html` (the six audience cards, how-to-reach-out, and what-we-look-for)
-- `docs/index.html` (the "Interested in working with us?" callout)
-- `docs/mentoring.html` (the "Looking for a mentor?" callout)
+- `docs/join.html`: audience cards, how to reach out, what we look for
+- `docs/index.html`: "Interested in working with us?"
+- `docs/mentoring.html`: "Looking for a mentor?"
