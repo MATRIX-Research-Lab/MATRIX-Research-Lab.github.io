@@ -243,6 +243,15 @@ section.soft {
 .member h3 { font-size: 1rem; margin-bottom: .12em; }
 .member .role { font-size: .82rem; color: var(--muted); margin: 0; }
 
+/* --- Compact roster lists: undergraduates, high school researchers, alumni --- */
+.roster { list-style: none; padding: 0; margin: 1.4rem 0 0; columns: 2; column-gap: 34px; }
+.roster li {
+  break-inside: avoid; margin-bottom: .55em; padding-bottom: .55em;
+  border-bottom: 1px solid var(--line); font-size: .92rem; color: var(--muted);
+}
+.roster .roster-name { display: block; color: var(--ink); font-weight: 600; }
+@media (max-width: 700px) { .roster { columns: 1; } }
+
 /* --- Entry lists: publications, grants, courses, mentee projects --- */
 .pub-list { list-style: none; padding: 0; margin: 0; }
 .pub-list > li { padding: 24px 0; border-top: 1px solid var(--line); margin: 0; }

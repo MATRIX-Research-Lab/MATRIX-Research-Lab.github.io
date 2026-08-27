@@ -106,3 +106,26 @@ funded openings:
 - `docs/join.html`: audience cards, how to reach out, what we look for
 - `docs/index.html`: "Interested in working with us?"
 - `docs/mentoring.html`: "Looking for a mentor?"
+
+`docs/people.html` also carries three commented templates, each with a filled-in example row
+to copy: the postdoc card grid, the undergraduate and high school roster, and the alumni
+section.
+
+## People page structure
+
+The team is grouped by density rather than split across tabs, so nothing is hidden from
+search, Cmd+F, or print:
+
+- Faculty: full `.person` blocks with bio and details.
+- Graduate students: photo cards in a four-up grid.
+- Undergraduate and high school researchers: `<ul class="roster">`, a two-column text list.
+- Alumni: the same roster list, commented out until there are alumni.
+
+Photo cards are worth the vertical space for the people visitors most want to see. The
+roster list holds about twenty names in the space of two cards, which is what keeps the
+page from growing without limit. Revisit this if graduate students pass a dozen or alumni
+pass twenty-five; at that point reuse the filter buttons from the publications page rather
+than adding a second interaction pattern.
+
+Do not put photographs of high school students on the page without written permission on
+file, and prefer first name plus last initial for minors.
