@@ -45,6 +45,7 @@ window.PUBLICATIONS = [
     doi: "10.1101/2025.04.26.649581",
     group: "methods",
     tags: ["Metabolomics", "Correlation networks"],
+    software: "MetVAE",
     status: "Under revision at STAR Protocols",
     featured: true
   },

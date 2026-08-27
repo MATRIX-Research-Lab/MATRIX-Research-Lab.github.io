@@ -92,7 +92,6 @@ renders from that file. Scholar stays linked for the complete record.
 
 ## Outstanding
 
-- [ ] MetVAE archive link in the citation list on `docs/software.html`
 - [ ] Syllabus PDF at `docs/assets/files/epib674-syllabus.pdf`, if it becomes public
 - [ ] Mentee names and photos in `docs/people.html`
 - [ ] Citation counts on `docs/index.html`, once or twice a year
