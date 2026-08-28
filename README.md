@@ -92,6 +92,8 @@ renders from that file. Scholar stays linked for the complete record.
 
 ## Outstanding
 
+- [ ] Office and phone: the site footers, contact page and `org-profile-README.md` still
+      carry 4200 Valley Drive, Suite 2242 and 301-405-2438. Both are pending an update.
 - [ ] Syllabus PDF at `docs/assets/files/epib674-syllabus.pdf`, if it becomes public
 - [ ] Mentee names and photos in `docs/people.html`
 - [ ] Citation counts on `docs/index.html`, once or twice a year
