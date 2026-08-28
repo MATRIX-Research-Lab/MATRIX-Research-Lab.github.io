@@ -9,3 +9,6 @@
 # Editor / OS noise
 *.swp
 Thumbs.db
+
+# Personal working notes, not for the public repository
+tys-plan.md

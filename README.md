@@ -96,6 +96,9 @@ renders from that file. Scholar stays linked for the complete record.
 - [ ] Mentee names and photos in `docs/people.html`
 - [ ] Citation counts on `docs/index.html`, once or twice a year
 - [ ] Teaching philosophy and mentoring paragraphs, in your own words
+- [ ] Terp Young Scholars course number, title, and year in `docs/teaching.html`, once VPAC
+      approves the course and Extended Studies accepts it. Working plan in `tys-plan.md`,
+      which is gitignored and stays out of the public repository.
 
 ## Commented-out sections
 
@@ -105,6 +108,12 @@ funded openings:
 - `docs/join.html`: audience cards, how to reach out, what we look for
 - `docs/index.html`: "Interested in working with us?"
 - `docs/mentoring.html`: "Looking for a mentor?"
+
+`docs/teaching.html` carries a whole commented-out "Teaching before college" section for the
+Terp Young Scholars course, and `docs/mentoring.html` a commented sentence pointing at it. Both
+stay hidden until the course is approved. Uncommenting the teaching section also means putting
+`class="soft"` back on the invited talks section and taking it off open materials, so the page
+keeps alternating background bands.
 
 `docs/people.html` also carries three commented templates, each with a filled-in example row
 to copy: the postdoc card grid, the undergraduate and high school roster, and the alumni
