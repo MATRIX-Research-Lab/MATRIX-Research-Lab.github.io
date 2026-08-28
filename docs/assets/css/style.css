@@ -192,6 +192,9 @@ section.soft {
 .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 .grid-3 { grid-template-columns: repeat(auto-fit, minmax(275px, 1fr)); }
 .grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+/* Member cards use auto-fill, not auto-fit, so a short roster keeps card-sized
+   cards instead of stretching two photos across the full width. */
+.grid-members { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
 
 .card {
   background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
@@ -240,6 +243,8 @@ section.soft {
 
 .member { text-align: center; }
 .member .avatar, .member img { width: 100%; height: 190px; margin-bottom: 15px; }
+/* Headshots are portrait; bias the crop upward so the face is not cut off. */
+.member img { object-position: center 22%; }
 .member h3 { font-size: 1rem; margin-bottom: .12em; }
 .member .role { font-size: .82rem; color: var(--muted); margin: 0; }
 
