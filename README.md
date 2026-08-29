@@ -51,8 +51,11 @@ Text sits between HTML tags. Change the text and leave the tags alone.
 - Grants, courses, mentee projects: copy an `<li> ... </li>` block inside the relevant
   `<ul class="pub-list">`. All three pages use the same format.
 - People: copy a `<div class="card member"> ... </div>` block.
-- Photos: save into `docs/assets/img/` and point an `<img>` at it. Resize large files first;
-  the cards render at roughly 200 by 230 pixels.
+- Photos: save into `docs/assets/img/` and point an `<img>` at it. Save as JPEG at about
+  600 by 900 pixels; the cards render at roughly 200 by 230, so anything larger is wasted
+  bandwidth, and a multi-megabyte file committed to git stays in the history for good.
+  Cards crop rather than stretch, biased toward the top of the frame, so a portrait
+  headshot works without hand-cropping.
 - Tags: `tag-on` green, `tag-off` grey, `tag-hi` red.
 - Navigation and footer are repeated in all ten files. Adding or renaming a page means
   editing every one.

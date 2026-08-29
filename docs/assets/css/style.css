@@ -243,8 +243,10 @@ section.soft {
 
 .member { text-align: center; }
 .member .avatar, .member img { width: 100%; height: 190px; margin-bottom: 15px; }
-/* Headshots are portrait; bias the crop upward so the face is not cut off. */
-.member img { object-position: center 22%; }
+/* Crop headshots rather than distorting them. Without object-fit the default is
+   fill, which stretches a portrait photo to the card box. Bias the crop upward
+   so faces are not cut off at the eyes. */
+.member img { object-fit: cover; object-position: center 22%; }
 .member h3 { font-size: 1rem; margin-bottom: .12em; }
 .member .role { font-size: .82rem; color: var(--muted); margin: 0; }
 
