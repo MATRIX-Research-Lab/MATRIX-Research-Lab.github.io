@@ -1,28 +1,48 @@
 /* ==========================================================================
    MATRIX Lab - stylesheet
-   Light, minimalist, technical. All color decisions live in :root below,
-   so re-theming the entire site is a few lines of editing.
+   Warm, minimalist, technical. All color decisions live in :root below, so
+   re-theming the entire site is a few lines of editing.
    ========================================================================== */
 
 :root {
-  /* --- Surfaces (light throughout) --- */
-  --paper:      #fcfcfd;   /* page background */
-  --paper-warm: #f5f7fa;   /* alternating sections, page headers */
-  --paper-tint: #eef2f8;   /* hero wash */
-  --card:       #ffffff;
+  /* --- Surfaces (warm, light throughout) --- */
+  --paper:       #fdfcfa;   /* warm white: page background */
+  --paper-warm:  #f7f4ee;   /* linen: alternating sections, page headers */
+  --paper-tint:  #f2ece2;   /* warm sand: hero wash */
+  --card:        #ffffff;
+  --paper-alpha: rgba(253, 252, 250, .86);   /* translucent sticky header */
 
-  /* --- Ink --- */
-  --ink:    #101418;       /* headings + body */
-  --ink-2:  #39424f;       /* secondary body */
-  --muted:  #616d7e;       /* captions, labels */
-  --line:   #e4e8ef;       /* hairlines */
-  --line-2: #d3dae4;       /* stronger hairlines */
+  /* --- Ink (warm neutrals) --- */
+  --ink:    #1a1613;       /* headings + body */
+  --ink-2:  #4a423b;       /* secondary body */
+  --muted:  #6f6459;       /* captions, labels */
+  --line:   #ebe5db;       /* hairlines */
+  --line-2: #ddd4c7;       /* stronger hairlines */
 
-  /* --- Accents --- */
-  --brand:      #c31431;   /* UMD-inspired red: links, accents */
-  --brand-dark: #8f0d23;
-  --brand-soft: rgba(195, 20, 49, .07);
-  --cool:       #4a6fa5;   /* cool secondary, used only in graphics */
+  /* --- Accents ---
+     The red is reserved. It appears in five places only: the brand dot, the
+     current-page nav item, the primary button, the tagline rule and .tag-hi.
+     Everything that used to be red is now ink or ochre, which is what makes
+     the page read as calm without giving up the UMD identity. --- */
+  --brand:      #a8232f;   /* UMD red, reserved */
+  --brand-dark: #7f1823;
+  --brand-soft: rgba(168, 35, 47, .06);
+  --brand-line: rgba(168, 35, 47, .20);
+  --accent:     #8f5a26;   /* ochre: link underlines, roles, hover */
+  --on-brand:   #ffffff;
+
+  /* --- Figure palette. Held separately from the UI accent so the artwork can
+     stay vivid while the interface recedes. --- */
+  --fig-warm: #a8232f;
+  --fig-cool: #6a7f8c;
+  --cool:     #6a7f8c;     /* retained name, graphics only */
+
+  /* --- Status: warm sage, so "active" does not import a cool green --- */
+  --ok-bg:   #eef2e8;
+  --ok-line: #cfdbc0;
+  --ok-ink:  #43592f;
+
+  --shadow: 0 8px 24px rgba(26, 22, 19, .07);
 
   /* --- Type --- */
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
@@ -32,6 +52,13 @@
   /* --- Layout --- */
   --maxw: 1140px;
   --radius: 10px;
+
+  /* --- Motion. One vocabulary, so timing stays consistent across the site. --- */
+  --dur-fast:  .18s;   /* hover feedback */
+  --dur:       .34s;   /* disclosure, dropdowns */
+  --dur-slow:  .75s;   /* the opening sequence */
+  --ease:      cubic-bezier(.22, .61, .36, 1);
+  --ease-soft: cubic-bezier(.16, 1, .3, 1);   /* decelerating, for arrivals */
 }
 
 /* --- Baseline --- */
@@ -47,8 +74,15 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 img { max-width: 100%; display: block; }
-a { color: var(--brand); text-decoration: none; }
-a:hover { text-decoration: underline; text-underline-offset: 3px; }
+/* Body links are ink with an ochre underline rather than colored text. This
+   is what removes most of the color from a page of prose; the underline still
+   carries the affordance, and hover moves the whole link to the accent. */
+a {
+  color: var(--ink); text-decoration: underline;
+  text-decoration-color: var(--accent); text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+a:hover { color: var(--accent); text-decoration-color: var(--accent); }
 
 h1, h2, h3, h4 {
   font-family: var(--serif); font-weight: 600; line-height: 1.18;
@@ -76,7 +110,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 3rem 0; }
    ========================================================================== */
 .site-header {
   position: sticky; top: 0; z-index: 50;
-  background: rgba(252,252,253,.86);
+  background: var(--paper-alpha);
   backdrop-filter: saturate(180%) blur(12px);
   border-bottom: 1px solid var(--line);
 }
@@ -87,36 +121,45 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 3rem 0; }
   font-family: var(--serif); font-size: 1.2rem; font-weight: 700;
   color: var(--ink); letter-spacing: -.02em;
 }
-.brand:hover { text-decoration: none; }
+.brand, .brand:hover { text-decoration: none; }
 .brand .dot { width: 8px; height: 8px; border-radius: 2px; background: var(--brand); display: inline-block; }
 .brand small {
   font-family: var(--mono); font-size: .64rem; font-weight: 500; color: var(--muted);
   letter-spacing: .1em; text-transform: uppercase;
 }
 
-.nav-links { display: flex; gap: 1px; list-style: none; margin: 0; padding: 0; }
+/* Nine flat items. Every page is one click from every other page: grouping
+   Grants and Software under Research made the two pages that most establish
+   the lab's record the two hardest to reach. */
+.nav-links { display: flex; align-self: stretch; align-items: stretch;
+             gap: 2px; list-style: none; margin: 0; padding: 0; }
 .nav-links li { margin: 0; }
+.nav-links > li { display: flex; align-items: center; }
 .nav-links a {
   display: block; padding: 7px 10px; border-radius: 7px;
-  color: var(--ink-2); font-size: .855rem; font-weight: 500; white-space: nowrap;
+  color: var(--ink-2); font-size: .84rem; font-weight: 500; white-space: nowrap;
+  text-decoration: none;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
 }
 .nav-links a:hover { background: var(--paper-warm); color: var(--ink); text-decoration: none; }
-.nav-links a.active { color: var(--brand); background: var(--brand-soft); }
-
+.nav-links a[aria-current="page"] { color: var(--brand); background: var(--brand-soft); }
 .nav-toggle {
   display: none; background: none; border: 1px solid var(--line-2); border-radius: 8px;
   padding: 7px 11px; cursor: pointer; font-size: 1rem; line-height: 1; color: var(--ink);
 }
 
-@media (max-width: 1060px) {
+/* Nine items need 940px beside the brand, which is also where the hero figure
+   moves under the copy, so the whole site changes shape at one number. */
+@media (max-width: 940px) {
   .nav-toggle { display: block; }
   .nav-links {
     display: none; position: absolute; top: 66px; left: 0; right: 0;
-    flex-direction: column; gap: 0; padding: 8px 20px 18px;
+    flex-direction: column; align-items: stretch; gap: 0; padding: 8px 20px 18px;
     background: var(--paper); border-bottom: 1px solid var(--line);
+    max-height: calc(100vh - 66px); overflow-y: auto;
   }
   .nav-links.open { display: flex; }
-  .nav-links a { padding: 11px 8px; font-size: .95rem; }
+  .nav-links > li > a { flex: 1 1 auto; padding: 11px 8px; font-size: .95rem; }
 }
 @media (max-width: 420px) { .brand small { display: none; } }
 
@@ -130,17 +173,42 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 3rem 0; }
   padding: 84px 0 78px;
   position: relative; overflow: hidden;
 }
+/* A warm light sitting behind the figure. Held at 5% so it is felt as the
+   ground the brushwork is laid onto rather than seen as a gradient. */
+.hero::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(60% 70% at 78% 45%, rgba(143, 90, 38, .05), transparent 70%);
+}
+.hero-grid { position: relative; }
 .hero-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 56px; align-items: center; }
+/* --- Hero figure: the sparse-matrix motif --- */
+.hero-figure { justify-self: end; max-width: 300px; width: 100%; }
+.hero-figure svg { display: block; overflow: visible; }
+.figure-note {
+  font-family: var(--mono); font-size: .62rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--muted);
+  margin: 1.1rem 0 0; text-align: right;
+  transition: opacity .3s linear;
+  /* Reserved at two lines, which is the longest of the four labels, so swapping
+     between them never reflows the column beneath. */
+  line-height: 1.6; min-height: 3.2em;
+}
+.figure-note.fading { opacity: 0; }
+
+/* Below 940px the figure moves under the copy at a reduced size rather than
+   disappearing: the opening is the point of the page, and a phone should not
+   be the one device that never sees it. */
 @media (max-width: 940px) {
-  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-  .hero-figure { display: none; }
+  .hero-grid { grid-template-columns: 1fr; gap: 34px; }
+  .hero-figure { justify-self: start; max-width: 240px; }
+  .figure-note { text-align: left; }
 }
 .hero h1 { margin-bottom: .22em; }
 .hero .expansion {
   font-family: var(--sans); font-size: clamp(1rem, 2vw, 1.16rem);
   color: var(--muted); margin-bottom: 1.5em; max-width: 46ch;
 }
-.hero .expansion b { color: var(--brand); font-weight: 600; }
+.hero .expansion b { color: var(--ink); font-weight: 600; }
 .hero .mission { font-size: 1.07rem; color: var(--ink-2); max-width: 60ch; }
 .tagline {
   font-family: var(--serif); font-style: italic; font-size: 1.22rem; color: var(--ink);
@@ -152,64 +220,132 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 3rem 0; }
   font-family: var(--mono); font-size: .68rem; font-weight: 500;
   letter-spacing: .16em; text-transform: uppercase;
 }
-.eyebrow { display: inline-block; color: var(--brand); margin-bottom: 1.15rem; }
-.kicker  { display: block; color: var(--brand); margin-bottom: .8rem; }
+.eyebrow { display: inline-block; color: var(--muted); margin-bottom: 1.15rem; }
+.kicker  { display: block; color: var(--muted); margin-bottom: .8rem; }
 
 /* --- Buttons --- */
 .btn {
   display: inline-block; padding: 10px 19px; border-radius: 8px;
   font-size: .9rem; font-weight: 600; border: 1px solid transparent; cursor: pointer;
+  text-align: center; text-decoration: none;
   transition: background .15s ease, border-color .15s ease, color .15s ease;
 }
 .btn:hover { text-decoration: none; }
-.btn-primary { background: var(--brand); color: #fff; }
+.btn-primary { background: var(--brand); color: var(--on-brand); }
 .btn-primary:hover { background: var(--brand-dark); }
 .btn-outline { border-color: var(--line-2); color: var(--ink); background: var(--card); }
-.btn-outline:hover { border-color: var(--brand); color: var(--brand); }
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 .btn-row { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 2.1rem; }
 
 /* ==========================================================================
    Sections
    ========================================================================== */
-section { padding: 84px 0; }
-section.soft {
-  background: var(--paper-warm);
-  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-}
-.section-head { max-width: 70ch; margin-bottom: 2.8rem; }
+section { padding: 96px 0; }
+/* On warm paper the change of ground separates the band on its own, so the
+   rules that used to fence it off are gone. */
+section.soft { background: var(--paper-warm); }
+.section-head { max-width: 70ch; margin-bottom: 3.2rem; }
 .section-head p { color: var(--muted); margin-bottom: 0; }
+
+/* The icon sprite is inlined once per page and never rendered directly; only
+   the <use> references are. Hidden with display:none rather than width:0 so it
+   costs no layout. */
+.icon-defs { display: none; }
+/* Stroke styling lives here, not on each <use>, so every icon on the site is
+   one edit away from a different weight. These properties are inherited, so
+   they cross into the shadow content a <use> generates. */
+.ic {
+  fill: none; stroke: currentColor; stroke-width: 1.6;
+  stroke-linecap: round; stroke-linejoin: round;
+}
 
 /* Interior page header */
 .page-head {
   background: linear-gradient(180deg, var(--paper-tint), var(--paper-warm));
   border-bottom: 1px solid var(--line); padding: 58px 0 50px;
 }
+.page-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
 .page-head h1 { margin-bottom: .28em; }
+/* A quiet page identifier: large enough to register at a glance, faint enough
+   that it never competes with the heading beside it. */
+.page-mark { flex: none; width: 72px; height: 72px; color: var(--ink); opacity: .18; }
+.page-mark svg { width: 100%; height: 100%; }
+@media (max-width: 700px) { .page-mark { display: none; } }
 .page-head p { color: var(--muted); max-width: 68ch; margin-bottom: 0; }
 
 /* --- Grids & cards --- */
-.grid { display: grid; gap: 18px; }
+.grid { display: grid; gap: 20px; }
 .grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
 .grid-3 { grid-template-columns: repeat(auto-fit, minmax(275px, 1fr)); }
 .grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
 /* Member cards use auto-fill, not auto-fit, so a short roster keeps card-sized
    cards instead of stretching two photos across the full width. */
 .grid-members { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+/* Disclosure grids size each card to its own content. Without this a card
+   that is open stretches the rest of its row to match, leaving tall empty
+   boxes beside it. */
+.grid-disclose { align-items: start; }
 
 .card {
   background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
-  padding: 26px 26px 28px;
-  transition: border-color .18s ease, transform .18s ease;
+  padding: 30px 30px 32px;
+  transition: border-color var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
 }
 .card:hover { border-color: var(--line-2); transform: translateY(-2px); }
 .card h3 { margin-bottom: .5em; }
 .card p:last-child { margin-bottom: 0; }
+/* Large icons. At 56px the glyph is a landmark you navigate by rather than a
+   decoration beside a heading, which is what lets the cards carry less text. */
 .card .icon {
-  width: 34px; height: 34px; border-radius: 8px; display: grid; place-items: center;
-  background: var(--brand-soft); color: var(--brand); margin-bottom: 15px;
+  width: 56px; height: 56px; border-radius: 14px; display: grid; place-items: center;
+  background: var(--paper-tint); color: var(--ink); margin-bottom: 18px;
 }
-.card .icon svg { width: 19px; height: 19px; }
-.card .role { color: var(--brand); font-weight: 600; font-size: .87rem; margin-bottom: .9em; }
+.card .icon svg { width: 28px; height: 28px; }
+.card .role { color: var(--accent); font-weight: 600; font-size: .87rem; margin-bottom: .9em; }
+
+/* --- Disclosure cards -----------------------------------------------------
+   Every card keeps a visible identity line; only the description collapses.
+   Built on <details> rather than a hover reveal, so one behaviour serves mouse
+   and touch alike, keyboard and screen readers work without script, and the
+   text stays reachable by find-in-page. Hover does emphasis only: it lifts the
+   card and firms the chevron, and never opens anything.
+   -------------------------------------------------------------------------- */
+details.card { padding: 0; }
+details.card > summary {
+  display: block; position: relative; cursor: pointer;
+  padding: 28px 30px 24px; list-style: none; border-radius: var(--radius);
+}
+details.card > summary::-webkit-details-marker { display: none; }
+details.card > summary h3 { margin: 0; padding-right: 28px; }
+details.card > summary .icon { margin-bottom: 16px; }
+
+/* Chevron drawn from two borders: no glyph, no icon font. */
+details.card > summary::after {
+  content: ""; position: absolute; right: 30px; top: 34px;
+  width: 8px; height: 8px;
+  border-right: 1.6px solid var(--muted); border-bottom: 1.6px solid var(--muted);
+  opacity: .45; transform: rotate(45deg);
+  transition: transform var(--dur) var(--ease), opacity var(--dur-fast) var(--ease);
+}
+details.card:hover > summary::after { opacity: 1; }
+details.card[open] > summary::after { transform: rotate(225deg); }
+
+/* A single column of disclosure cards. Long prose wants a full measure, which
+   a grid of columns would cut in half. */
+.stack { display: grid; gap: 20px; }
+
+/* The line that stays visible when a card is closed. Without it a collapsed
+   page would be a list of titles and would say nothing on its own. */
+.teaser { color: var(--muted); font-size: .95rem; margin: .4em 0 0; padding-right: 28px; }
+details.card > summary .kicker { margin-bottom: .55rem; }
+
+.disclosure { padding: 0 30px 28px; }
+.disclosure p:last-child { margin-bottom: 0; }
+details.card[open] > .disclosure { animation: reveal var(--dur) var(--ease-soft) both; }
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(-5px); }
+  to   { opacity: 1; transform: none; }
+}
 
 /* Stat tiles */
 .stat { text-align: center; padding: 26px 16px; }
@@ -238,7 +374,7 @@ section.soft {
   font-family: var(--mono); font-size: .7rem; text-align: center; padding: 14px; line-height: 1.6;
 }
 .person h3 { margin-bottom: .18em; font-size: 1.3rem; }
-.person .role { color: var(--brand); font-weight: 600; font-size: .9rem; margin-bottom: 1.1em; }
+.person .role { color: var(--accent); font-weight: 600; font-size: .9rem; margin-bottom: 1.1em; }
 @media (max-width: 700px) { .person { grid-template-columns: 1fr; gap: 20px; } }
 
 .member { text-align: center; }
@@ -283,9 +419,10 @@ section.soft {
   letter-spacing: .05em; padding: 3px 9px; border-radius: 999px;
   border: 1px solid var(--line); background: var(--paper-warm); color: var(--muted);
 }
-a.tag:hover { border-color: var(--brand); color: var(--brand); text-decoration: none; }
-.tag-hi { background: var(--brand-soft); border-color: rgba(195,20,49,.22); color: var(--brand); }
-.tag-on { background: #e9f3ec; border-color: #c3e0cc; color: #1f6b3a; }   /* active / current */
+a.tag { text-decoration: none; }
+a.tag:hover { border-color: var(--accent); color: var(--accent); }
+.tag-hi { background: var(--brand-soft); border-color: var(--brand-line); color: var(--brand); }
+.tag-on { background: var(--ok-bg); border-color: var(--ok-line); color: var(--ok-ink); }  /* active / current */
 .tag-off{ background: var(--paper-warm); border-color: var(--line); color: var(--muted); } /* completed */
 
 /* --- Key/value rows --- */
@@ -301,7 +438,7 @@ a.tag:hover { border-color: var(--brand); color: var(--brand); text-decoration: 
 /* --- Callout --- */
 .callout {
   background: var(--paper-warm); border: 1px solid var(--line);
-  border-left: 2px solid var(--brand); border-radius: var(--radius); padding: 24px 28px;
+  border-left: 2px solid var(--accent); border-radius: var(--radius); padding: 24px 28px;
 }
 .callout h3 { margin-top: 0; }
 .callout p:last-child { margin-bottom: 0; }
@@ -314,7 +451,7 @@ a.tag:hover { border-color: var(--brand); color: var(--brand); text-decoration: 
 }
 .todo::before {
   content: "PLACEHOLDER"; display: block; font-family: var(--mono); font-size: .62rem;
-  letter-spacing: .16em; color: var(--brand); margin-bottom: .5em;
+  letter-spacing: .16em; color: var(--accent); margin-bottom: .5em;
 }
 .todo p:last-child { margin-bottom: 0; }
 
@@ -330,7 +467,7 @@ a.tag:hover { border-color: var(--brand); color: var(--brand); text-decoration: 
   text-transform: uppercase; color: var(--ink); margin-bottom: 1.1em;
 }
 .site-footer a { color: var(--ink-2); }
-.site-footer a:hover { color: var(--brand); }
+.site-footer a:hover { color: var(--accent); }
 .footer-grid { display: grid; grid-template-columns: 1.7fr 1fr 1fr; gap: 40px; }
 @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr; gap: 30px; } }
 .site-footer ul { list-style: none; padding: 0; margin: 0; }
@@ -343,6 +480,7 @@ a.tag:hover { border-color: var(--brand); color: var(--brand); text-decoration: 
 
 /* Accessibility */
 .skip { position: absolute; left: -9999px; }
+.skip { text-decoration: none; }
 .skip:focus {
   left: 14px; top: 14px; background: var(--card); color: var(--ink);
   padding: 10px 16px; border-radius: 8px; border: 1px solid var(--line-2); z-index: 100;
@@ -352,20 +490,101 @@ a.tag:hover { border-color: var(--brand); color: var(--brand); text-decoration: 
 @media print {
   .site-header, .site-footer, .btn-row, .nav-toggle { display: none; }
   body { font-size: 11pt; }
-}
-
-/* --- Hero figure: the sparse-matrix motif --- */
-.hero-figure { justify-self: end; max-width: 300px; width: 100%; }
-.hero-figure svg { display: block; overflow: visible; }
-.figure-note {
-  font-family: var(--mono); font-size: .62rem; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--muted);
-  margin: 1.1rem 0 0; text-align: right;
+  /* main.js opens every <details> before printing and restores them after.
+     CSS alone cannot: the closed state lives in the user-agent slot. */
+  details.card { border-color: var(--line-2); }
+  details.card > summary::after { display: none; }
+  .hero-figure { display: none; }
 }
 
 /* --- Cards that are themselves links --- */
 a.card { display: block; text-decoration: none; }
-a.card:hover { text-decoration: none; border-color: var(--brand); }
+a.card:hover h3 { color: var(--accent); }
+a.card:hover { text-decoration: none; border-color: var(--line-2); }
 a.card h3 { color: var(--ink); }
 a.card .kicker { margin-bottom: .55rem; }
 a.card p { color: var(--ink-2); }
+
+/* ==========================================================================
+   The hero figure
+   Impressionist, and permanent. Once hero.js runs, the figure is brushwork and
+   nothing else: the 81 flat rects are hidden and stay hidden. They are the
+   specification the layouts read, and they are the whole figure for a reader
+   with scripting off or reduced motion, which is why nothing here hides them
+   until the strokes actually exist.
+
+   The strokes are conserved and slowly rearranged between four configurations
+   that spell out the lab's name. Density carries the data in every one of
+   them, and each cell or bar takes a minority of its complement, so warm and
+   cool mix optically instead of sitting as flat fills.
+
+   .hero-anim is set on <html> by a short inline script in index.html, and only
+   when scripting is on and motion is not reduced. A reader with neither still
+   gets the finished hero, because nothing here hides anything on its own.
+   ========================================================================== */
+.hero-anim .hero-copy > * { opacity: 0; }
+
+.hero-copy > .rise { animation: rise var(--dur-slow) var(--ease-soft) both; }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* The flat matrix is the fallback, so it is hidden only once the strokes that
+   replace it are on the page. */
+#matrix-figure.painted > rect { opacity: 0; }
+
+/* The layer fades in as one object: one opacity to animate on arrival rather
+   than three hundred. */
+.touch-layer {
+  pointer-events: none; opacity: 0;
+  /* hero.js raises --gain for the configurations that spread the strokes
+     more thinly, so the surface holds one density throughout. */
+  --gain: 1;
+  transition: opacity 1.2s linear;
+}
+.touch-layer.lit { opacity: 1; }
+
+/* Every placement is carried by the transform, so each stroke is centred on
+   the SVG origin and fill-box turns it about itself. The morph is long and
+   eased at both ends: a reorganisation, not a move.
+   No will-change: promoting three hundred strokes to their own compositor
+   layers costs far more than it saves. */
+.touch-layer rect {
+  transform-box: fill-box; transform-origin: center;
+  transition: transform 5s cubic-bezier(.65, 0, .35, 1);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+/* The arrival is quicker than a morph; a five-second entrance reads as a stall. */
+.touch-layer.arriving rect { transition-duration: 1.6s; }
+/* A return visit puts the strokes straight into the matrix with no travel. */
+.touch-layer.instant rect { transition: none; }
+
+/* Each stroke breathes around its own base opacity, which hero.js sets per
+   element as --o. Durations and start phases are randomised there, so the
+   surface shimmers without the ensemble ever resynchronising. */
+@keyframes shimmer {
+  from { opacity: calc(var(--o) * var(--gain) * .55); }
+  to   { opacity: calc(var(--o) * var(--gain) * 1.3); }
+}
+
+/* Off screen, or in a tab nobody is looking at, nothing runs. */
+.touch-layer.paused rect { animation-play-state: paused; }
+
+/* ==========================================================================
+   Reduced motion
+   Everything above is decoration. Honour the preference by removing it
+   outright rather than by shortening it.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .card:hover { transform: none; }
+}

@@ -11,19 +11,39 @@
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+<!-- Icon sprite. Defined once per page and never rendered; only the <use>
+     references are. Stroke styling is inherited from .ic in the stylesheet,
+     so a symbol carries geometry and nothing else. Duplicated per page for
+     the same reason the nav is: there is no build step. -->
+<svg class="icon-defs" aria-hidden="true" focusable="false"><defs>
+  <symbol id="ic-composition" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+  <symbol id="ic-integration" viewBox="0 0 24 24"><circle cx="7" cy="7" r="4"/><circle cx="17" cy="17" r="4"/><path d="M11 7h6M7 11v6"/></symbol>
+  <symbol id="ic-causal" viewBox="0 0 24 24"><path d="M4 6h9M4 12h6M4 18h12"/><path d="M17 5l3 3-3 3"/></symbol>
+  <symbol id="ic-xai" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/></symbol>
+  <symbol id="ic-environment" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 4 3 5 3 9h8c0-4 3-5 3-9a7 7 0 0 0-7-7z"/><path d="M9 21h6"/></symbol>
+  <symbol id="ic-software" viewBox="0 0 24 24"><path d="M4 4h16v13H4z"/><path d="M8 21h8M12 17v4"/><path d="M8 12l2.5-3 2 2.5L15 8"/></symbol>
+  <symbol id="ic-network" viewBox="0 0 24 24"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="8" r="2"/><circle cx="12" cy="17" r="2"/><path d="M6.7 7.2 10.6 15.4M17.4 9.7 13.5 15.5M7 6.3 17 7.7"/></symbol>
+  <symbol id="ic-publications" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h5"/></symbol>
+  <symbol id="ic-grants" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M8.5 14.2 7 22l5-2.6L17 22l-1.5-7.8"/></symbol>
+  <symbol id="ic-teaching" viewBox="0 0 24 24"><path d="M12 4 2 9l10 5 10-5-10-5z"/><path d="M6 11.5V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5"/></symbol>
+  <symbol id="ic-mentoring" viewBox="0 0 24 24"><circle cx="8" cy="7" r="3"/><path d="M2.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 4.6a3 3 0 0 1 0 5.6"/><path d="M17 14.3a5.5 5.5 0 0 1 4.5 5.7"/></symbol>
+  <symbol id="ic-people" viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M6 19a6 6 0 0 1 12 0"/><circle cx="4.4" cy="10.4" r="2.2"/><circle cx="19.6" cy="10.4" r="2.2"/></symbol>
+  <symbol id="ic-join" viewBox="0 0 24 24"><path d="M14 3h5v18h-5"/><path d="M3 12h11"/><path d="M10 8l4 4-4 4"/></symbol>
+  <symbol id="ic-contact" viewBox="0 0 24 24"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></symbol>
+</defs></svg>
+
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="site-header">
   <div class="wrap nav">
     <a class="brand" href="index.html"><span class="dot"></span>MATRIX Lab <small>UMD SPH</small></a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">&#9776;</button>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">&#9776;</button>
     <ul class="nav-links" id="nav-links">
-      <li><a href="index.html">Home</a></li>
       <li><a href="research.html">Research</a></li>
       <li><a href="grants.html">Grants</a></li>
       <li><a href="publications.html">Publications</a></li>
       <li><a href="software.html">Software</a></li>
-      <li><a href="teaching.html" class="active">Teaching</a></li>
+      <li><a href="teaching.html" aria-current="page">Teaching</a></li>
       <li><a href="mentoring.html">Mentoring</a></li>
       <li><a href="people.html">People</a></li>
       <li><a href="join.html">Join</a></li>
@@ -35,8 +55,11 @@
 <main id="main">
   <div class="page-head">
     <div class="wrap">
-      <h1>Teaching</h1>
-      <p>Courses, invited talks, and openly available materials on statistical methods for high-dimensional biomedical data.</p>
+      <div>
+        <h1>Teaching</h1>
+        <p>Courses, invited talks, and openly available materials on statistical methods for high-dimensional biomedical data.</p>
+      </div>
+      <div class="page-mark" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><use href="#ic-teaching"/></svg></div>
     </div>
   </div>
 
@@ -52,6 +75,7 @@
       <div class="grid grid-2">
 
         <div class="card">
+          <div class="icon" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><use href="#ic-teaching"/></svg></div>
           <p class="role" style="font-family:var(--mono);font-size:.72rem;letter-spacing:.1em">EPIB 674</p>
           <h3>Statistical Foundations of Machine Learning in Public Health</h3>
           <p style="color:var(--muted);font-size:.9rem;margin-bottom:.9em">Spring 2025, Spring 2026</p>
@@ -64,6 +88,7 @@
         </div>
 
         <div class="card">
+          <div class="icon" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><use href="#ic-composition"/></svg></div>
           <p class="role" style="font-family:var(--mono);font-size:.72rem;letter-spacing:.1em">EPIB 315</p>
           <h3>Biostatistics for Public Health Practice</h3>
           <p style="color:var(--muted);font-size:.9rem;margin-bottom:.9em">Fall 2024, Fall 2025</p>

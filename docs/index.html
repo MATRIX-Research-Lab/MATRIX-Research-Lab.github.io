@@ -9,17 +9,51 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
+<script>
+/* Marks the document before first paint so the opening sequence starts from a
+   blank hero rather than flashing the finished one. Set only when scripting is
+   on and motion is not reduced, so nothing is ever hidden from a reader who
+   would not get the animation. The timeout is a failsafe: if hero.js does not
+   load, the hero appears anyway. */
+(function (d) {
+  try {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  } catch (e) { return; }
+  d.classList.add('hero-anim');
+  setTimeout(function () { d.classList.remove('hero-anim'); }, 3000);
+})(document.documentElement);
+</script>
 </head>
 <body>
+<!-- Icon sprite. Defined once per page and never rendered; only the <use>
+     references are. Stroke styling is inherited from .ic in the stylesheet,
+     so a symbol carries geometry and nothing else. Duplicated per page for
+     the same reason the nav is: there is no build step. -->
+<svg class="icon-defs" aria-hidden="true" focusable="false"><defs>
+  <symbol id="ic-composition" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+  <symbol id="ic-integration" viewBox="0 0 24 24"><circle cx="7" cy="7" r="4"/><circle cx="17" cy="17" r="4"/><path d="M11 7h6M7 11v6"/></symbol>
+  <symbol id="ic-causal" viewBox="0 0 24 24"><path d="M4 6h9M4 12h6M4 18h12"/><path d="M17 5l3 3-3 3"/></symbol>
+  <symbol id="ic-xai" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/></symbol>
+  <symbol id="ic-environment" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 4 3 5 3 9h8c0-4 3-5 3-9a7 7 0 0 0-7-7z"/><path d="M9 21h6"/></symbol>
+  <symbol id="ic-software" viewBox="0 0 24 24"><path d="M4 4h16v13H4z"/><path d="M8 21h8M12 17v4"/><path d="M8 12l2.5-3 2 2.5L15 8"/></symbol>
+  <symbol id="ic-network" viewBox="0 0 24 24"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="8" r="2"/><circle cx="12" cy="17" r="2"/><path d="M6.7 7.2 10.6 15.4M17.4 9.7 13.5 15.5M7 6.3 17 7.7"/></symbol>
+  <symbol id="ic-publications" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h5"/></symbol>
+  <symbol id="ic-grants" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M8.5 14.2 7 22l5-2.6L17 22l-1.5-7.8"/></symbol>
+  <symbol id="ic-teaching" viewBox="0 0 24 24"><path d="M12 4 2 9l10 5 10-5-10-5z"/><path d="M6 11.5V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-5.5"/></symbol>
+  <symbol id="ic-mentoring" viewBox="0 0 24 24"><circle cx="8" cy="7" r="3"/><path d="M2.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 4.6a3 3 0 0 1 0 5.6"/><path d="M17 14.3a5.5 5.5 0 0 1 4.5 5.7"/></symbol>
+  <symbol id="ic-people" viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M6 19a6 6 0 0 1 12 0"/><circle cx="4.4" cy="10.4" r="2.2"/><circle cx="19.6" cy="10.4" r="2.2"/></symbol>
+  <symbol id="ic-join" viewBox="0 0 24 24"><path d="M14 3h5v18h-5"/><path d="M3 12h11"/><path d="M10 8l4 4-4 4"/></symbol>
+  <symbol id="ic-contact" viewBox="0 0 24 24"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></symbol>
+</defs></svg>
+
 <a class="skip" href="#main">Skip to content</a>
 
 <!-- ============ HEADER ============ -->
 <header class="site-header">
   <div class="wrap nav">
-    <a class="brand" href="index.html"><span class="dot"></span>MATRIX Lab <small>UMD SPH</small></a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">&#9776;</button>
+    <a class="brand" href="index.html" aria-current="page"><span class="dot"></span>MATRIX Lab <small>UMD SPH</small></a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Menu">&#9776;</button>
     <ul class="nav-links" id="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
       <li><a href="research.html">Research</a></li>
       <li><a href="grants.html">Grants</a></li>
       <li><a href="publications.html">Publications</a></li>
@@ -38,7 +72,7 @@
   <!-- ============ HERO ============ -->
   <div class="hero">
     <div class="wrap hero-grid">
-      <div>
+      <div class="hero-copy">
         <span class="eyebrow">University of Maryland School of Public Health</span>
         <h1>MATRIX Lab</h1>
         <p class="expansion">
@@ -57,88 +91,88 @@
         </div>
       </div>
       <div class="hero-figure" aria-hidden="true">
-        <svg viewBox="0 0 274 274" width="100%" role="presentation">
-          <rect x="0" y="0" width="26" height="26" rx="3" fill="var(--cool)" fill-opacity="0.15"/>
+        <svg id="matrix-figure" viewBox="0 0 274 274" width="100%" role="presentation">
+          <rect x="0" y="0" width="26" height="26" rx="3" fill="var(--fig-cool)" fill-opacity="0.15"/>
           <rect x="31" y="0" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
-          <rect x="62" y="0" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.49"/>
-          <rect x="93" y="0" width="26" height="26" rx="3" fill="var(--cool)" fill-opacity="0.12"/>
-          <rect x="124" y="0" width="26" height="26" rx="3" fill="var(--cool)" fill-opacity="0.11"/>
-          <rect x="155" y="0" width="26" height="26" rx="3" fill="var(--cool)" fill-opacity="0.12"/>
-          <rect x="186" y="0" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.42"/>
+          <rect x="62" y="0" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.49"/>
+          <rect x="93" y="0" width="26" height="26" rx="3" fill="var(--fig-cool)" fill-opacity="0.12"/>
+          <rect x="124" y="0" width="26" height="26" rx="3" fill="var(--fig-cool)" fill-opacity="0.11"/>
+          <rect x="155" y="0" width="26" height="26" rx="3" fill="var(--fig-cool)" fill-opacity="0.12"/>
+          <rect x="186" y="0" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.42"/>
           <rect x="217" y="0" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
-          <rect x="248" y="0" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.3"/>
+          <rect x="248" y="0" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.3"/>
           <rect x="0" y="31" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
           <rect x="31" y="31" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
           <rect x="62" y="31" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
-          <rect x="93" y="31" width="26" height="26" rx="3" fill="var(--cool)" fill-opacity="0.39"/>
-          <rect x="124" y="31" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.69"/>
-          <rect x="155" y="31" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.25"/>
-          <rect x="186" y="31" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.35"/>
+          <rect x="93" y="31" width="26" height="26" rx="3" fill="var(--fig-cool)" fill-opacity="0.39"/>
+          <rect x="124" y="31" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.69"/>
+          <rect x="155" y="31" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.25"/>
+          <rect x="186" y="31" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.35"/>
           <rect x="217" y="31" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
-          <rect x="248" y="31" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.52"/>
+          <rect x="248" y="31" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.52"/>
           <rect x="0" y="62" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
-          <rect x="31" y="62" width="26" height="26" rx="3" fill="var(--cool)" fill-opacity="0.26"/>
-          <rect x="62" y="62" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.2"/>
-          <rect x="93" y="62" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.58"/>
-          <rect x="124" y="62" width="26" height="26" rx="3" fill="var(--cool)" fill-opacity="0.19"/>
+          <rect x="31" y="62" width="26" height="26" rx="3" fill="var(--fig-cool)" fill-opacity="0.26"/>
+          <rect x="62" y="62" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.2"/>
+          <rect x="93" y="62" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.58"/>
+          <rect x="124" y="62" width="26" height="26" rx="3" fill="var(--fig-cool)" fill-opacity="0.19"/>
           <rect x="155" y="62" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
-          <rect x="186" y="62" width="26" height="26" rx="3" fill="var(--cool)" fill-opacity="0.19"/>
+          <rect x="186" y="62" width="26" height="26" rx="3" fill="var(--fig-cool)" fill-opacity="0.19"/>
           <rect x="217" y="62" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
           <rect x="248" y="62" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
-          <rect x="0" y="93" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.52"/>
+          <rect x="0" y="93" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.52"/>
           <rect x="31" y="93" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
           <rect x="62" y="93" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
           <rect x="93" y="93" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
-          <rect x="124" y="93" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.77"/>
-          <rect x="155" y="93" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.42"/>
+          <rect x="124" y="93" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.77"/>
+          <rect x="155" y="93" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.42"/>
           <rect x="186" y="93" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
-          <rect x="217" y="93" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.46"/>
-          <rect x="248" y="93" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.57"/>
+          <rect x="217" y="93" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.46"/>
+          <rect x="248" y="93" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.57"/>
           <rect x="0" y="124" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
           <rect x="31" y="124" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
           <rect x="62" y="124" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
-          <rect x="93" y="124" width="26" height="26" rx="3" fill="var(--cool)" fill-opacity="0.31"/>
+          <rect x="93" y="124" width="26" height="26" rx="3" fill="var(--fig-cool)" fill-opacity="0.31"/>
           <rect x="124" y="124" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
           <rect x="155" y="124" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
-          <rect x="186" y="124" width="26" height="26" rx="3" fill="var(--cool)" fill-opacity="0.35"/>
+          <rect x="186" y="124" width="26" height="26" rx="3" fill="var(--fig-cool)" fill-opacity="0.35"/>
           <rect x="217" y="124" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
-          <rect x="248" y="124" width="26" height="26" rx="3" fill="var(--cool)" fill-opacity="0.3"/>
-          <rect x="0" y="155" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.59"/>
+          <rect x="248" y="124" width="26" height="26" rx="3" fill="var(--fig-cool)" fill-opacity="0.3"/>
+          <rect x="0" y="155" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.59"/>
           <rect x="31" y="155" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
           <rect x="62" y="155" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
           <rect x="93" y="155" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
-          <rect x="124" y="155" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.4"/>
+          <rect x="124" y="155" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.4"/>
           <rect x="155" y="155" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
-          <rect x="186" y="155" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.45"/>
-          <rect x="217" y="155" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.23"/>
-          <rect x="248" y="155" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.64"/>
-          <rect x="0" y="186" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.31"/>
-          <rect x="31" y="186" width="26" height="26" rx="3" fill="var(--cool)" fill-opacity="0.36"/>
-          <rect x="62" y="186" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.44"/>
+          <rect x="186" y="155" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.45"/>
+          <rect x="217" y="155" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.23"/>
+          <rect x="248" y="155" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.64"/>
+          <rect x="0" y="186" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.31"/>
+          <rect x="31" y="186" width="26" height="26" rx="3" fill="var(--fig-cool)" fill-opacity="0.36"/>
+          <rect x="62" y="186" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.44"/>
           <rect x="93" y="186" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
           <rect x="124" y="186" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
           <rect x="155" y="186" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
           <rect x="186" y="186" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
-          <rect x="217" y="186" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.42"/>
-          <rect x="248" y="186" width="26" height="26" rx="3" fill="var(--cool)" fill-opacity="0.37"/>
+          <rect x="217" y="186" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.42"/>
+          <rect x="248" y="186" width="26" height="26" rx="3" fill="var(--fig-cool)" fill-opacity="0.37"/>
           <rect x="0" y="217" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
-          <rect x="31" y="217" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.27"/>
-          <rect x="62" y="217" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.3"/>
-          <rect x="93" y="217" width="26" height="26" rx="3" fill="var(--cool)" fill-opacity="0.28"/>
-          <rect x="124" y="217" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.16"/>
-          <rect x="155" y="217" width="26" height="26" rx="3" fill="var(--cool)" fill-opacity="0.21"/>
+          <rect x="31" y="217" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.27"/>
+          <rect x="62" y="217" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.3"/>
+          <rect x="93" y="217" width="26" height="26" rx="3" fill="var(--fig-cool)" fill-opacity="0.28"/>
+          <rect x="124" y="217" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.16"/>
+          <rect x="155" y="217" width="26" height="26" rx="3" fill="var(--fig-cool)" fill-opacity="0.21"/>
           <rect x="186" y="217" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
           <rect x="217" y="217" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
           <rect x="248" y="217" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
-          <rect x="0" y="248" width="26" height="26" rx="3" fill="var(--cool)" fill-opacity="0.29"/>
+          <rect x="0" y="248" width="26" height="26" rx="3" fill="var(--fig-cool)" fill-opacity="0.29"/>
           <rect x="31" y="248" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
-          <rect x="62" y="248" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.72"/>
+          <rect x="62" y="248" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.72"/>
           <rect x="93" y="248" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
           <rect x="124" y="248" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
           <rect x="155" y="248" width="26" height="26" rx="3" fill="none" stroke="var(--line-2)" stroke-opacity="0.35"/>
-          <rect x="186" y="248" width="26" height="26" rx="3" fill="var(--cool)" fill-opacity="0.22"/>
-          <rect x="217" y="248" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.55"/>
-          <rect x="248" y="248" width="26" height="26" rx="3" fill="var(--brand)" fill-opacity="0.2"/>
+          <rect x="186" y="248" width="26" height="26" rx="3" fill="var(--fig-cool)" fill-opacity="0.22"/>
+          <rect x="217" y="248" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.55"/>
+          <rect x="248" y="248" width="26" height="26" rx="3" fill="var(--fig-warm)" fill-opacity="0.2"/>
         </svg>
         <p class="figure-note">A sparse abundance matrix: taxa &times; samples</p>
       </div>
@@ -158,54 +192,78 @@
         </p>
       </div>
 
-      <div class="grid grid-3">
-        <div class="card">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+      <div class="grid grid-3 grid-disclose">
+        <details class="card">
+          <summary>
+            <div class="icon" aria-hidden="true">
+              <svg class="ic" viewBox="0 0 24 24"><use href="#ic-composition"/></svg>
+            </div>
+            <h3>Compositional data analysis</h3>
+          </summary>
+          <div class="disclosure">
+            <p>Bias-corrected differential abundance for microbiome and other relative-abundance data, with rigorous control of false discoveries.</p>
           </div>
-          <h3>Compositional data analysis</h3>
-          <p>Bias-corrected differential abundance for microbiome and other relative-abundance data, with rigorous control of false discoveries.</p>
-        </div>
+        </details>
 
-        <div class="card">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="7" r="4"/><circle cx="17" cy="17" r="4"/><path d="M11 7h6M7 11v6"/></svg>
+        <details class="card">
+          <summary>
+            <div class="icon" aria-hidden="true">
+              <svg class="ic" viewBox="0 0 24 24"><use href="#ic-integration"/></svg>
+            </div>
+            <h3>Multi-omics integration</h3>
+          </summary>
+          <div class="disclosure">
+            <p>Joint modeling across metagenomics, metabolomics, proteomics, and clinical data to recover signals no single assay reveals.</p>
           </div>
-          <h3>Multi-omics integration</h3>
-          <p>Joint modeling across metagenomics, metabolomics, proteomics, and clinical data to recover signals no single assay reveals.</p>
-        </div>
+        </details>
 
-        <div class="card">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h9M4 12h6M4 18h12"/><path d="M17 5l3 3-3 3"/></svg>
+        <details class="card">
+          <summary>
+            <div class="icon" aria-hidden="true">
+              <svg class="ic" viewBox="0 0 24 24"><use href="#ic-causal"/></svg>
+            </div>
+            <h3>Causal inference</h3>
+          </summary>
+          <div class="disclosure">
+            <p>Mediation, confounding, and treatment-effect estimation in observational omics studies, longitudinal cohorts, and clinical trials.</p>
           </div>
-          <h3>Causal inference</h3>
-          <p>Mediation, confounding, and treatment-effect estimation in observational omics studies, longitudinal cohorts, and clinical trials.</p>
-        </div>
+        </details>
 
-        <div class="card">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/></svg>
+        <details class="card">
+          <summary>
+            <div class="icon" aria-hidden="true">
+              <svg class="ic" viewBox="0 0 24 24"><use href="#ic-xai"/></svg>
+            </div>
+            <h3>Explainable AI</h3>
+          </summary>
+          <div class="disclosure">
+            <p>Machine-learning models whose predictions come with an interpretable account of <em>why</em>, a prerequisite for biomedical adoption.</p>
           </div>
-          <h3>Explainable AI</h3>
-          <p>Machine-learning models whose predictions come with an interpretable account of <em>why</em>, a prerequisite for biomedical adoption.</p>
-        </div>
+        </details>
 
-        <div class="card">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2a7 7 0 0 0-7 7c0 4 3 5 3 9h8c0-4 3-5 3-9a7 7 0 0 0-7-7z"/><path d="M9 21h6"/></svg>
+        <details class="card">
+          <summary>
+            <div class="icon" aria-hidden="true">
+              <svg class="ic" viewBox="0 0 24 24"><use href="#ic-environment"/></svg>
+            </div>
+            <h3>Environmental health</h3>
+          </summary>
+          <div class="disclosure">
+            <p>Linking exposures to the microbiome, the metabolome, and downstream health outcomes across the life course.</p>
           </div>
-          <h3>Environmental health</h3>
-          <p>Linking exposures to the microbiome, the metabolome, and downstream health outcomes across the life course.</p>
-        </div>
+        </details>
 
-        <div class="card">
-          <div class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16v13H4z"/><path d="M8 21h8M12 17v4"/><path d="M8 12l2.5-3 2 2.5L15 8"/></svg>
+        <details class="card">
+          <summary>
+            <div class="icon" aria-hidden="true">
+              <svg class="ic" viewBox="0 0 24 24"><use href="#ic-software"/></svg>
+            </div>
+            <h3>Open-source software</h3>
+          </summary>
+          <div class="disclosure">
+            <p>Every method is released with documented, maintained R or Python software, so that findings are reproducible by anyone.</p>
           </div>
-          <h3>Open-source software</h3>
-          <p>Every method is released with documented, maintained R or Python software, so that findings are reproducible by anyone.</p>
-        </div>
+        </details>
       </div>
     </div>
   </section>
@@ -262,17 +320,20 @@
   <section class="soft">
     <div class="wrap">
       <div class="grid grid-3">
-        <a class="card" href="grants.html" style="color:inherit">
+        <a class="card" href="grants.html">
+          <div class="icon" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><use href="#ic-grants"/></svg></div>
           <span class="kicker">Grants</span>
           <h3>Research support</h3>
           <p>Active and completed awards funding the lab's methodological and collaborative work.</p>
         </a>
-        <a class="card" href="teaching.html" style="color:inherit">
+        <a class="card" href="teaching.html">
+          <div class="icon" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><use href="#ic-teaching"/></svg></div>
           <span class="kicker">Teaching</span>
           <h3>Courses &amp; workshops</h3>
           <p>Courses at UMD, invited talks at ENAR and JSM, and openly available materials.</p>
         </a>
-        <a class="card" href="mentoring.html" style="color:inherit">
+        <a class="card" href="mentoring.html">
+          <div class="icon" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><use href="#ic-mentoring"/></svg></div>
           <span class="kicker">Mentoring</span>
           <h3>Student work</h3>
           <p>Mentee projects, student-led papers, theses, and where our alumni have gone.</p>
@@ -342,5 +403,6 @@
 </footer>
 
 <script src="assets/js/main.js"></script>
+<script src="assets/js/hero.js"></script>
 </body>
 </html>
