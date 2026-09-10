@@ -546,18 +546,21 @@ a.card p { color: var(--ink-2); }
 .touch-layer.lit { opacity: 1; }
 
 /* Every placement is carried by the transform, so each stroke is centred on
-   the SVG origin and fill-box turns it about itself. The morph is long and
-   eased at both ends: a reorganisation, not a move.
+   the SVG origin and fill-box turns it about itself. The morph is eased at
+   both ends: a reorganisation, not a move. Its duration is the MORPH constant
+   in hero.js, which schedules the cycle around it; the two are one number and
+   have to be changed together.
    No will-change: promoting three hundred strokes to their own compositor
    layers costs far more than it saves. */
 .touch-layer rect {
   transform-box: fill-box; transform-origin: center;
-  transition: transform 5s cubic-bezier(.65, 0, .35, 1);
+  transition: transform 3s cubic-bezier(.65, 0, .35, 1);
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
-/* The arrival is quicker than a morph; a five-second entrance reads as a stall. */
+/* The arrival is quicker than a morph: an entrance that takes as long as a
+   reorganisation reads as a stall. */
 .touch-layer.arriving rect { transition-duration: 1.6s; }
 /* A return visit puts the strokes straight into the matrix with no travel. */
 .touch-layer.instant rect { transition: none; }

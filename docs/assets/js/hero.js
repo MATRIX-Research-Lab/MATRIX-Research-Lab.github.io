@@ -68,8 +68,10 @@
     var CELL = 26;
     var MID = 137;          /* centre line: the null, and the bars' origin */
     var SCATTER = 0.08;     /* share of strokes that resolve into nothing */
-    var HOLD = 7000;        /* ms a configuration is held */
-    var MORPH = 5000;       /* ms to reorganise into the next one */
+    var HOLD = 3500;        /* ms a configuration is held */
+    var MORPH = 3000;       /* ms to reorganise into the next one, and the
+                               transition duration .touch-layer rect carries */
+    var FIRST = 3500;       /* ms before the opening matrix first reorganises */
 
     function rnd(lo, hi) { return lo + Math.random() * (hi - lo); }
     function pick(a) { return a[(Math.random() * a.length) | 0]; }
@@ -159,7 +161,7 @@
 
       strokes.push({
         el: el, warm: warm, scatter: scatter, angle: 0,
-        delay: Math.round(rnd(0, 800))
+        delay: Math.round(rnd(0, 450))
       });
     }
 
@@ -356,12 +358,20 @@
     var timer = null, running = true;
     var onScreen = true, visible = !document.hidden;
 
+    /* The opening matrix is held for less than a full cycle. A reader who
+       arrives and leaves within ten seconds should still see the figure
+       reorganise at least once, since that is the argument it makes; a first
+       interval as long as the rest would leave them with a static image. */
+    var first = true;
+
     function schedule() {
       clearTimeout(timer);
+      var wait = first ? FIRST : HOLD + MORPH;
+      first = false;
       timer = setTimeout(function () {
         applyPhase((phase + 1) % PHASES.length);
         schedule();
-      }, HOLD + MORPH);
+      }, wait);
     }
 
     function sync() {
@@ -386,7 +396,7 @@
     });
 
     /* A small hook so the cycle can be stepped in testing without waiting out
-       twelve seconds a phase. */
+       a phase in real time. */
     window.matrixFigure = {
       step: function () { applyPhase((phase + 1) % PHASES.length); schedule(); },
       go: function (k) { applyPhase(k); schedule(); },
