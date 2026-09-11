@@ -30,11 +30,10 @@ window.PUBLICATIONS = [
     year: 2026,
     title: "Beyond bacteria: a multi-omics view of the gut–brain axis in Parkinson’s disease",
     authors: "Han H*‡, Luo O*, Li K, Rahaman S, Ok EU, Zhang L, Liang M, Lin H†",
-    venue: "<em>Frontiers in Cellular and Infection Microbiology</em>",
-    doi: null,
+    venue: "<em>Frontiers in Cellular and Infection Microbiology</em>, 16:1900578",
+    doi: "10.3389/fcimb.2026.1900578",
     group: "methods",
     tags: ["Multi-omics", "Parkinson’s disease", "Student-led"],
-    status: "Under revision",
     featured: true
   },
   {
