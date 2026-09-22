@@ -28,6 +28,17 @@ window.PUBLICATIONS = [
   /* ---------------------------------------------------------------- 2026 */
   {
     year: 2026,
+    title: "Structured cross-omics interaction discovery with a triple-graph model",
+    authors: "Yu J*, Lin H*†, Chen S",
+    venue: "<em>bioRxiv</em>",
+    doi: "10.64898/2026.09.10.749540",
+    group: "methods",
+    tags: ["Multi-omics", "Cross-omics networks"],
+    status: "Preprint",
+    featured: true
+  },
+  {
+    year: 2026,
     title: "Beyond bacteria: a multi-omics view of the gut–brain axis in Parkinson’s disease",
     authors: "Han H*‡, Luo O*, Li K, Rahaman S, Ok EU, Zhang L, Liang M, Lin H†",
     venue: "<em>Frontiers in Cellular and Infection Microbiology</em>, 16:1900578",
@@ -56,7 +67,7 @@ window.PUBLICATIONS = [
     doi: "10.64898/2026.01.26.701398",
     group: "collaborative",
     tags: ["ANCOM-BC", "Software"],
-    status: "Preprint",
+    status: "Under revision at Bioinformatics",
     featured: true
   },
   {
