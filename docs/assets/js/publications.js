@@ -28,6 +28,16 @@ window.PUBLICATIONS = [
   /* ---------------------------------------------------------------- 2026 */
   {
     year: 2026,
+    title: "Efficient and scalable Python implementation of ANCOM-BC and ANCOM-BC2 for omics differential abundance testing",
+    authors: "Wu Z, Lin H, Morton JT, Zhu Q",
+    venue: "<em>Bioinformatics</em>, btag767",
+    doi: "10.1093/bioinformatics/btag767",
+    group: "collaborative",
+    tags: ["ANCOM-BC", "Software"],
+    featured: true
+  },
+  {
+    year: 2026,
     title: "Structured cross-omics interaction discovery with a triple-graph model",
     authors: "Yu J*, Lin H*†, Chen S",
     venue: "<em>bioRxiv</em>",
@@ -57,17 +67,6 @@ window.PUBLICATIONS = [
     tags: ["Metabolomics", "Correlation networks"],
     software: "MetVAE",
     status: "Under revision at STAR Protocols",
-    featured: true
-  },
-  {
-    year: 2026,
-    title: "Efficient and scalable Python implementation of ANCOM-BC for omics differential abundance testing",
-    authors: "Wu Z, Lin H, Morton JT, Zhu Q",
-    venue: "<em>bioRxiv</em>",
-    doi: "10.64898/2026.01.26.701398",
-    group: "collaborative",
-    tags: ["ANCOM-BC", "Software"],
-    status: "Under revision at Bioinformatics",
     featured: true
   },
   {
