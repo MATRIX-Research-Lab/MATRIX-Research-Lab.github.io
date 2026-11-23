@@ -26,7 +26,10 @@ and child health, environmental health, and clinical trials.
 
 - **[ANCOMBC](https://github.com/FrederickHuangLin/ANCOMBC)**: differential abundance analysis for microbiome data with bias correction.
   Also on [Bioconductor](https://www.bioconductor.org/packages/ANCOMBC/).
-- **[MetVAE](https://pypi.org/project/metvae/)**: a variational autoencoder (VAE) framework for untargeted metabolomics correlation analysis.
+- **[MetVAE](https://github.com/MATRIX-Research-Lab/MetVAE)**: sparse correlation networks from untargeted metabolomics data, with variational autoencoder (VAE) imputation.
+  R ([GitHub](https://github.com/MATRIX-Research-Lab/MetVAE)), Python ([PyPI](https://pypi.org/project/metvae/)), and a graphical interface through [GNPS_Local](https://github.com/Some-Earth-2514/GNPS_Local).
+- **[TriGer](https://github.com/MATRIX-Research-Lab/TriGer)**: modules of features densely associated across two omics layers, from a triple-graph model.
+  R ([GitHub](https://github.com/MATRIX-Research-Lab/TriGer)), Python ([PyPI](https://pypi.org/project/triger/)), and [MATLAB](https://github.com/jy2941/TriGer).
 
 For bugs or usage questions about our software, please **open an issue on the relevant
 repository** rather than emailing; that way the answer helps everyone else too.

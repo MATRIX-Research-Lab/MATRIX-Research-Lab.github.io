@@ -89,16 +89,42 @@
         <div class="card">
           <div class="icon" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><use href="#ic-integration"/></svg></div>
           <h3>MetVAE</h3>
-          <p class="role">Python / PyPI</p>
+          <p class="role">R / Python / GNPS</p>
           <p>
-            A variational autoencoder for metabolomics data that corrects for confounding while
-            estimating molecular co-occurrence, supporting correlation-based molecular networks
-            built from large-scale untargeted metabolomics.
+            Sparse correlation networks from untargeted metabolomics data. A variational autoencoder
+            imputes values below the detection limit, sample covariates are adjusted for, and
+            metabolite pairs are retained by multiple testing or by sparse estimation of correlation.
+            A graphical interface is available through GNPS_Local. The Bioconductor submission of the
+            R package is under review.
           </p>
-          <p><code>pip install metvae</code></p>
+          <p><code>BiocManager::install("MATRIX-Research-Lab/MetVAE")</code><br>
+             <code>pip install metvae</code></p>
           <p class="pub-links">
+            <a class="tag tag-hi" href="https://github.com/MATRIX-Research-Lab/MetVAE">R</a>
             <a class="tag tag-hi" href="https://pypi.org/project/metvae/">PyPI</a>
-            <a class="tag" href="https://github.com/FrederickHuangLin">GitHub</a>
+            <a class="tag" href="https://github.com/MATRIX-Research-Lab/MetVAE-PyPI">Python GitHub</a>
+            <a class="tag" href="https://github.com/Some-Earth-2514/GNPS_Local">GNPS_Local</a>
+            <a class="tag" href="publications.html">Cite</a>
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="icon" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><use href="#ic-network"/></svg></div>
+          <h3>TriGer</h3>
+          <p class="role">R / Python / MATLAB</p>
+          <p>
+            Structured cross-omics interaction discovery with a triple-graph model. TriGer detects
+            modules of features that are densely associated across two omics layers and coherent
+            within each layer. The R and Python packages give identical results; the Bioconductor
+            submission of the R package is under review.
+          </p>
+          <p><code>remotes::install_github("MATRIX-Research-Lab/TriGer")</code><br>
+             <code>pip install triger</code></p>
+          <p class="pub-links">
+            <a class="tag tag-hi" href="https://github.com/MATRIX-Research-Lab/TriGer">R</a>
+            <a class="tag tag-hi" href="https://pypi.org/project/triger/">PyPI</a>
+            <a class="tag" href="https://github.com/MATRIX-Research-Lab/TriGer-PyPI">Python GitHub</a>
+            <a class="tag" href="https://github.com/jy2941/TriGer">MATLAB</a>
             <a class="tag" href="publications.html">Cite</a>
           </p>
         </div>
@@ -122,8 +148,8 @@
           <h3>More coming</h3>
           <p class="role" style="color:var(--muted);font-weight:600;font-size:.9rem">In development</p>
           <p>
-            New tools for multi-omics integration, causal mediation with compositional mediators, and
-            explainable prediction models are in development and will be released here.
+            New tools for causal mediation with compositional mediators, further multi-omics
+            integration, and explainable prediction models are in development and will be released here.
           </p>
           <p class="pub-links">
             <a class="tag" href="contact.html">Ask about early access</a>
@@ -146,6 +172,8 @@
               Aksenov A. <em>bioRxiv</em> (2026).
               <a href="https://doi.org/10.1101/2025.04.26.649581">doi:10.1101/2025.04.26.649581</a>
               Preprint, under revision at <em>STAR Protocols</em>.</li>
+          <li><strong>TriGer</strong>: Yu J, Lin H, Chen S. <em>bioRxiv</em> (2026).
+              <a href="https://doi.org/10.64898/2026.09.10.749540">doi:10.64898/2026.09.10.749540</a></li>
         </ul>
       </div>
     </div>

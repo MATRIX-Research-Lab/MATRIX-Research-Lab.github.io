@@ -44,6 +44,7 @@ window.PUBLICATIONS = [
     doi: "10.64898/2026.09.10.749540",
     group: "methods",
     tags: ["Multi-omics", "Cross-omics networks"],
+    software: "TriGer",
     status: "Preprint",
     featured: true
   },

@@ -17,7 +17,7 @@ index.html          Home
 research.html       Research threads
 grants.html         Funding, current and past
 publications.html   Publication list
-software.html       ANCOMBC, MetVAE, q2-composition
+software.html       ANCOMBC, MetVAE, TriGer, q2-composition
 teaching.html       Courses, talks, open materials
 mentoring.html      Mentee projects and committees
 people.html         PI, mentees, collaborators
