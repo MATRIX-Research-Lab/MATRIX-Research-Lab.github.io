@@ -26,7 +26,7 @@ and child health, environmental health, and clinical trials.
 
 Installation, documentation, and tutorials for all methods: **[Open-source software website](https://matrix-research-lab.github.io/software/)**.
 
-- **[ANCOMBC](https://github.com/FrederickHuangLin/ANCOMBC)**: differential abundance analysis for microbiome data with bias correction.
+- **[ANCOMBC](https://github.com/MATRIX-Research-Lab/ANCOMBC)**: differential abundance analysis for microbiome data with bias correction.
   Also on [Bioconductor](https://www.bioconductor.org/packages/ANCOMBC/).
 - **[MetVAE](https://github.com/MATRIX-Research-Lab/MetVAE)**: sparse correlation networks from untargeted metabolomics data, with variational autoencoder (VAE) imputation.
   R ([GitHub](https://github.com/MATRIX-Research-Lab/MetVAE)), Python ([PyPI](https://pypi.org/project/metvae/)), and a graphical interface through [GNPS_Local](https://github.com/Some-Earth-2514/GNPS_Local).
